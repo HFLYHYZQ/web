@@ -1,0 +1,51 @@
+{{ define "main" }}
+{{/* 开屏动画：每次进入首页都展示 */}}
+<div id="splash" class="splash" aria-hidden="false">
+  <div class="splash-bg" style="background-image: url('{{ .Site.Params.splashImage | relURL }}');"></div>
+  <div class="splash-veil"></div>
+  <button id="enter-btn" class="enter-btn" type="button" aria-label="共赏，进入站点">共赏</button>
+</div>
+
+{{/* 首页导航 */}}
+<section class="home" style="--home-bg: url('{{ .Site.Params.splashImage | relURL }}');">
+  <div class="home-inner">
+    <h1 class="home-title">{{ .Site.Title }}</h1>
+    <p class="home-sub">{{ .Site.Params.description }}</p>
+    <div class="nav-grid">
+      <a class="nav-card" href="{{ "about/" | relURL }}">
+        <span class="nav-card-label">关于</span>
+      </a>
+      <a class="nav-card" href="{{ "settings/" | relURL }}">
+        <span class="nav-card-label">设置</span>
+      </a>
+      <a class="nav-card" href="{{ "links/" | relURL }}">
+        <span class="nav-card-label">友情链接</span>
+      </a>
+      <a class="nav-card" href="{{ "posts/" | relURL }}">
+        <span class="nav-card-label">前情提要</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var splash = document.getElementById('splash');
+    var btn = document.getElementById('enter-btn');
+    if (!splash || !btn) return;
+    function enter() {
+      splash.classList.add('is-hidden');
+      splash.setAttribute('aria-hidden', 'true');
+      // 动画结束后彻底移出可交互流
+      splash.addEventListener('transitionend', function () {
+        splash.style.display = 'none';
+      }, { once: true });
+    }
+    btn.addEventListener('click', enter);
+    // 支持回车键进入
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !splash.classList.contains('is-hidden')) enter();
+    });
+  })();
+</script>
+{{ end }}

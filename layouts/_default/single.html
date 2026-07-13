@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{ with .Date }}<time class="post-date" datetime="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ .Format "2006-01-02" }}</time>{{ end }}
+  </header>
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+  <div class="post-foot">
+    <a class="back-link" href="{{ "posts/" | relURL }}">← 返回前情提要</a>
+  </div>
+</article>
+{{ end }}
