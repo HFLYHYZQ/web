@@ -1,4 +1,4 @@
 ---
-title: "璇女集"
-description: "黑金方正 · 个人博客"
+title: "荒唐言"
+description: "无言子 · 个人博客"
 ---

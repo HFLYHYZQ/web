@@ -1,11 +1,11 @@
 baseURL = "https://HFLYHYZQ.github.io/web/"
 defaultContentLanguage = "zh-cn"
-title = "璇女集"
+title = "荒唐言"
 paginate = 10
 enableRobotsTXT = true
 
 [params]
-  description = "黑金方正 · 个人博客"
+  description = "无言子 · 个人博客"
   author = "HFLYHYZQ"
   # 首屏背景图（相对 static/）
   splashImage = "images/xuannv.png"
